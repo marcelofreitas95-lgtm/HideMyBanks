@@ -1,0 +1,37 @@
+{
+  "title": "Calculadora",
+  "projectId": "10902155357120582589",
+  "url": "https://stitch.withgoogle.com/projects/10902155357120582589",
+  "screens": [
+    {
+      "name": "projects/10902155357120582589/screens/bf1926c8832d4f4787f67e142008b164",
+      "title": "Calculadora - Tela Principal",
+      "html": "projects/10902155357120582589/files/3400c5d325674acf9aa06e74fcb44823",
+      "screenshot": "projects/10902155357120582589/files/f2f34be026cd406d9a70e12e1b8d579c"
+    },
+    {
+      "name": "projects/10902155357120582589/screens/67f74b0047d04b5cabe72682d0181b3a",
+      "title": "Configurar Número de Acesso",
+      "html": "projects/10902155357120582589/files/5305af2cd99e4cf69d0d0eb5569f392d",
+      "screenshot": "projects/10902155357120582589/files/6162fcee205640319675d08f6bc1a23c"
+    },
+    {
+      "name": "projects/10902155357120582589/screens/14997ed71fe54b118100a9ea1bae92b8",
+      "title": "Área privada - Visão Geral",
+      "html": "projects/10902155357120582589/files/71b108dfe11d41019b22a1d6c9c6bf10",
+      "screenshot": "projects/10902155357120582589/files/ce95a92432e143e8b0cbe37a847f29d1"
+    },
+    {
+      "name": "projects/10902155357120582589/screens/de0421c44164461b971f1db6c1ffd950",
+      "title": "Simulador de Aparência do iPhone",
+      "html": "projects/10902155357120582589/files/3269d5bc824f4d37a695e3fab3a0776e",
+      "screenshot": "projects/10902155357120582589/files/de951e05e9e44b099b0880635ef5721f"
+    },
+    {
+      "name": "projects/10902155357120582589/screens/81329101521e4709bdc118bb8497ef71",
+      "title": "Selecionar Aplicativos",
+      "html": "projects/10902155357120582589/files/220ddef451114f81b0957ed0a28ffff0",
+      "screenshot": "projects/10902155357120582589/files/17bbf43fb01d4b6dbc0305e05fe94cd0"
+    }
+  ]
+}

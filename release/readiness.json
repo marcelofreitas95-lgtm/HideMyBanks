@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "buildNumber": 1,
+  "nativeBuild": {"passed": false, "evidence": ""},
+  "nativeTests": {"passed": false, "evidence": ""},
+  "familyControlsAppApproved": {"passed": false, "evidence": ""},
+  "familyControlsMonitorApproved": {"passed": false, "evidence": ""},
+  "marketplaceProvisioningSupported": {"passed": false, "evidence": ""},
+  "physicalDevice": {"passed": false, "evidence": ""},
+  "hiddenHomeAndLibrary": {"passed": false, "evidence": ""},
+  "hiddenSearch": {"passed": false, "evidence": ""},
+  "launchBlocked": {"passed": false, "evidence": ""},
+  "notificationsSuppressed": {"passed": false, "evidence": ""},
+  "automaticRelock": {"passed": false, "evidence": ""},
+  "rebootAndTermination": {"passed": false, "evidence": ""},
+  "authorizationRevocation": {"passed": false, "evidence": ""},
+  "privacyAndMetadata": {"passed": false, "evidence": ""}
+}

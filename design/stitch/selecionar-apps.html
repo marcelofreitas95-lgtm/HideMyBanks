@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selecionar Aplicativos - Proteção</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#f7c67a",
+            "on-background": "#e4e2e0",
+            "tertiary-container": "#afb4b0",
+            "on-secondary-fixed-variant": "#00522b",
+            "outline-variant": "#4f4539",
+            "tertiary-fixed-dim": "#c3c8c3",
+            "surface-container-highest": "#343534",
+            "on-error": "#690005",
+            "surface-container-low": "#1b1c1b",
+            "on-primary-fixed-variant": "#604100",
+            "inverse-surface": "#e4e2e0",
+            "surface-container": "#1f201f",
+            "tertiary-fixed": "#dfe4df",
+            "inverse-on-surface": "#30312f",
+            "outline": "#9b8f7f",
+            "surface-dim": "#131413",
+            "surface": "#131413",
+            "surface-variant": "#343534",
+            "background": "#131413",
+            "on-surface-variant": "#d2c4b4",
+            "primary-fixed": "#ffdeae",
+            "secondary": "#89d7a0",
+            "on-secondary": "#00391c",
+            "secondary-container": "#015d31",
+            "secondary-fixed-dim": "#89d7a0",
+            "surface-bright": "#393938",
+            "inverse-primary": "#7c5816",
+            "surface-tint": "#efbf74",
+            "surface-container-high": "#292a29",
+            "on-tertiary-fixed-variant": "#434845",
+            "primary-fixed-dim": "#efbf74",
+            "on-secondary-fixed": "#00210e",
+            "error-container": "#93000a",
+            "on-tertiary-container": "#414643",
+            "secondary-fixed": "#a5f4bb",
+            "on-surface": "#e4e2e0",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#0d0e0d",
+            "on-tertiary": "#2d322f",
+            "on-secondary-container": "#86d39c",
+            "on-primary": "#432c00",
+            "on-primary-fixed": "#281900",
+            "on-error-container": "#ffdad6",
+            "on-primary-container": "#5e3f00",
+            "on-tertiary-fixed": "#181d1a",
+            "tertiary": "#cbcfcb",
+            "primary-container": "#d9ab62"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "gutter": "0.75rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Manrope"],
+            "keypad-num": ["Manrope"],
+            "display-calc-mobile": ["Manrope"],
+            "label-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "keypad-op": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "display-calc": ["Manrope"],
+            "body-md": ["Manrope"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "keypad-num": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-calc-mobile": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "keypad-op": ["28px", { "lineHeight": "34px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-calc": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased flex justify-center items-center min-h-screen p-0 m-0 select-none">
+<!-- iPhone Viewport Wrapper (390x844 Frame) -->
+<main class="relative w-[390px] h-[844px] bg-[#171817] text-on-surface flex flex-col overflow-hidden shadow-2xl rounded-[48px] border-[0.5px] border-outline-variant/30">
+<!-- iOS Dynamic Island & Status Bar Top Boundary -->
+<header class="w-full pt-[47px] px-margin pb-2 shrink-0 z-20">
+<!-- Top Navigation Bar -->
+<div class="flex items-center justify-between h-11 relative">
+<button aria-label="Voltar" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-[0.96] transition-transform" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center pointer-events-none">
+<h1 class="font-headline-md text-headline-md tracking-tight text-on-surface">Selecionar aplicativos</h1>
+</div>
+<!-- Counter Chip in Soft Amber (#D9AB62) -->
+<div class="flex items-center">
+<div class="bg-primary-container/15 text-primary border border-primary-container/40 rounded-full px-2.5 py-1 flex items-center gap-1">
+<span class="font-label-sm text-label-sm font-semibold tracking-wider" id="selected-counter">4 selecionados</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Search Input Area -->
+<section class="px-margin pt-2 pb-3 shrink-0 z-10">
+<div class="relative flex items-center w-full bg-[#272A28] rounded-xl border border-outline-variant/40 focus-within:border-primary-container transition-colors">
+<div class="pl-3.5 pr-2 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="w-full bg-transparent border-0 text-on-surface placeholder:text-on-surface-variant/70 font-body-md text-body-md py-2.5 pr-4 pl-0 focus:ring-0 focus:outline-none" placeholder="Buscar aplicativo instalado..." type="text"/>
+</div>
+</section>
+<!-- Content Stream / Application List -->
+<section class="flex-1 overflow-y-auto custom-scrollbar px-margin space-y-2 pb-44 pt-1">
+<!-- 1. Nubank (Selected) -->
+<article class="app-item group bg-[#1E201E] rounded-2xl p-3.5 flex items-center justify-between border border-outline-variant/20 active:scale-[0.98] transition-all cursor-pointer" data-selected="true">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#272A28] flex items-center justify-center text-primary-container border border-outline-variant/30">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[16px] leading-5 text-on-surface font-semibold">Nubank</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Finanças e pagamentos</span>
+</div>
+</div>
+<!-- Rounded Checkbox (Amber Checked) -->
+<div class="checkbox-circle w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-[#171817] shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+</article>
+<!-- 2. Itaú (Selected) -->
+<article class="app-item group bg-[#1E201E] rounded-2xl p-3.5 flex items-center justify-between border border-outline-variant/20 active:scale-[0.98] transition-all cursor-pointer" data-selected="true">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#272A28] flex items-center justify-center text-primary-container border border-outline-variant/30">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[16px] leading-5 text-on-surface font-semibold">Itaú</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Banco e investimentos</span>
+</div>
+</div>
+<!-- Rounded Checkbox (Amber Checked) -->
+<div class="checkbox-circle w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-[#171817] shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+</article>
+<!-- 3. Banco do Brasil (Selected) -->
+<article class="app-item group bg-[#1E201E] rounded-2xl p-3.5 flex items-center justify-between border border-outline-variant/20 active:scale-[0.98] transition-all cursor-pointer" data-selected="true">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#272A28] flex items-center justify-center text-primary-container border border-outline-variant/30">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[16px] leading-5 text-on-surface font-semibold">Banco do Brasil</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Serviços bancários</span>
+</div>
+</div>
+<!-- Rounded Checkbox (Amber Checked) -->
+<div class="checkbox-circle w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-[#171817] shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+</article>
+<!-- 4. Caixa Econômica (Selected) -->
+<article class="app-item group bg-[#1E201E] rounded-2xl p-3.5 flex items-center justify-between border border-outline-variant/20 active:scale-[0.98] transition-all cursor-pointer" data-selected="true">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#272A28] flex items-center justify-center text-primary-container border border-outline-variant/30">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[16px] leading-5 text-on-surface font-semibold">Caixa Econômica</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Loterias e contas</span>
+</div>
+</div>
+<!-- Rounded Checkbox (Amber Checked) -->
+<div class="checkbox-circle w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-[#171817] shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+</article>
+<!-- 5. WhatsApp (Unselected) -->
+<article class="app-item group bg-[#1E201E] rounded-2xl p-3.5 flex items-center justify-between border border-outline-variant/20 active:scale-[0.98] transition-all cursor-pointer" data-selected="false">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#272A28] flex items-center justify-center text-on-surface-variant border border-outline-variant/30">
+<span class="material-symbols-outlined text-[24px]">chat</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[16px] leading-5 text-on-surface font-semibold">WhatsApp</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Mensagens e chamadas</span>
+</div>
+</div>
+<!-- Rounded Checkbox (Unchecked Circle) -->
+<div class="checkbox-circle w-6 h-6 rounded-full border border-outline/50 bg-transparent flex items-center justify-center text-transparent transition-colors">
+<span class="material-symbols-outlined text-[16px] font-bold hidden">check</span>
+</div>
+</article>
+<!-- 6. Fotos (Unselected) -->
+<article class="app-item group bg-[#1E201E] rounded-2xl p-3.5 flex items-center justify-between border border-outline-variant/20 active:scale-[0.98] transition-all cursor-pointer" data-selected="false">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-[#272A28] flex items-center justify-center text-on-surface-variant border border-outline-variant/30">
+<span class="material-symbols-outlined text-[24px]">photo_library</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-[16px] leading-5 text-on-surface font-semibold">Fotos</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Galeria de imagens</span>
+</div>
+</div>
+<!-- Rounded Checkbox (Unchecked Circle) -->
+<div class="checkbox-circle w-6 h-6 rounded-full border border-outline/50 bg-transparent flex items-center justify-center text-transparent transition-colors">
+<span class="material-symbols-outlined text-[16px] font-bold hidden">check</span>
+</div>
+</article>
+</section>
+<!-- Sticky Bottom Bar Floating Panel & Disclaimer -->
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#171817] via-[#171817]/95 to-transparent pt-6 pb-[34px] px-margin flex flex-col items-center gap-3 z-30 pointer-events-auto">
+<!-- Primary Action Button -->
+<button class="w-full h-13 py-3.5 bg-primary-container text-on-primary-container font-headline-md text-[16px] font-bold tracking-tight rounded-2xl flex items-center justify-center shadow-lg active:scale-[0.98] transition-transform" type="button">
+        Salvar seleção
+      </button>
+<!-- Discreet Footnote Disclaimer -->
+<p class="font-label-sm text-[11px] text-center text-on-surface-variant/75 leading-tight px-3 tracking-normal">Os aplicativos selecionados serão ocultados e silenciados no escopo da simulação deste protótipo.<br/><span class="text-[11px] text-on-surface-variant/60 block mt-1">Protótipo: a proteção do iOS está sendo simulada.</span></p>
+<!-- Apple Home Indicator Bar -->
+<div class="w-32 h-1 bg-on-surface/20 rounded-full mt-1 shrink-0"></div>
+</div>
+</main>
+<!-- Interactive State Logic -->
+<script>
+    document.querySelectorAll('.app-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const isSelected = item.getAttribute('data-selected') === 'true';
+        const checkbox = item.querySelector('.checkbox-circle');
+        const iconSpan = checkbox.querySelector('.material-symbols-outlined');
+
+        if (isSelected) {
+          item.setAttribute('data-selected', 'false');
+          checkbox.className = 'checkbox-circle w-6 h-6 rounded-full border border-outline/50 bg-transparent flex items-center justify-center text-transparent transition-colors';
+          iconSpan.classList.add('hidden');
+        } else {
+          item.setAttribute('data-selected', 'true');
+          checkbox.className = 'checkbox-circle w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-[#171817] shadow-sm transition-colors';
+          iconSpan.classList.remove('hidden');
+        }
+
+        const count = document.querySelectorAll('.app-item[data-selected="true"]').length;
+        document.getElementById('selected-counter').innerText = `${count} selecionados`;
+      });
+    });
+  </script>
+</body></html>

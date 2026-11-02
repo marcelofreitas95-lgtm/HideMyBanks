@@ -1,0 +1,110 @@
+workflows:
+  validate:
+    name: Flutter e testes nativos iOS
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: 3.41.6
+      xcode: 26.6
+    scripts:
+      - name: Dependências
+        script: flutter pub get --enforce-lockfile
+      - name: Análise e testes Flutter
+        script: |
+          set -e
+          flutter analyze --fatal-infos
+          flutter test --coverage
+          python3 -m unittest discover -s scripts -p test_release_tools.py
+      - name: Compilar e testar app e extensão no simulador
+        script: bash scripts/native_tests.sh
+      - name: Compilar demonstração web
+        script: flutter build web --release --no-web-resources-cdn
+    artifacts:
+      - build/reports/*.xcresult
+      - coverage/lcov.info
+      - build/web/**
+
+  ios-development:
+    name: IPA de desenvolvimento para o iPhone registrado
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: 3.41.6
+      xcode: 26.6
+      ios_signing:
+        provisioning_profiles:
+          - calculadora_development
+          - calculadora_monitor_development
+        certificates:
+          - calculadora_development_certificate
+    scripts:
+      - name: Identificadores registrados
+        script: python3 scripts/configure_ios.py
+      - name: Dependências e testes
+        script: |
+          set -e
+          flutter pub get --enforce-lockfile
+          flutter analyze --fatal-infos
+          flutter test
+          python3 -m unittest discover -s scripts -p test_release_tools.py
+          bash scripts/native_tests.sh
+      - name: Perfis de assinatura
+        script: xcode-project use-profiles
+      - name: IPA assinada
+        script: |
+          set -e
+          read -r version number < <(python3 -c 'import json; d=json.load(open("release/identity.json")); print(d["version"],d["buildNumber"])')
+          flutter build ipa --release --build-name="$version" --build-number="$number" --export-options-plist=/Users/builder/export_options.plist
+          python3 scripts/verify_signing.py --archive build/ios/archive/Runner.xcarchive --output build/reports/signing.json --expected-type development
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - build/ios/archive/*.xcarchive/dSYMs/**
+      - build/reports/*.xcresult
+      - build/reports/signing.json
+
+  pal-notarization:
+    name: Enviar build validada à Apple para AltStore PAL
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    integrations:
+      app_store_connect: calculadora_apple
+    environment:
+      flutter: 3.41.6
+      xcode: 26.6
+      ios_signing:
+        provisioning_profiles:
+          - calculadora_distribution
+          - calculadora_monitor_distribution
+        certificates:
+          - calculadora_distribution_certificate
+    scripts:
+      - name: Evidências do iPhone e permissões de distribuição
+        script: python3 scripts/release_gate.py
+      - name: Identificadores registrados
+        script: python3 scripts/configure_ios.py
+      - name: Dependências e testes
+        script: |
+          set -e
+          flutter pub get --enforce-lockfile
+          flutter analyze --fatal-infos
+          flutter test
+          python3 -m unittest discover -s scripts -p test_release_tools.py
+          bash scripts/native_tests.sh
+      - name: Perfis de assinatura
+        script: xcode-project use-profiles
+      - name: IPA para App Store Connect
+        script: |
+          set -e
+          read -r version number < <(python3 -c 'import json; d=json.load(open("release/identity.json")); print(d["version"],d["buildNumber"])')
+          flutter build ipa --release --build-name="$version" --build-number="$number" --export-options-plist=/Users/builder/export_options.plist
+          python3 scripts/verify_signing.py --archive build/ios/archive/Runner.xcarchive --output build/reports/signing.json --expected-type app_store
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - build/ios/archive/*.xcarchive/dSYMs/**
+      - build/reports/*.xcresult
+      - build/reports/signing.json
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: false
+        submit_to_app_store: false

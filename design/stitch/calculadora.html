@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Calculadora</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#f7c67a",
+            "on-background": "#e4e2e0",
+            "tertiary-container": "#afb4b0",
+            "on-secondary-fixed-variant": "#00522b",
+            "outline-variant": "#4f4539",
+            "tertiary-fixed-dim": "#c3c8c3",
+            "surface-container-highest": "#343534",
+            "on-error": "#690005",
+            "surface-container-low": "#1b1c1b",
+            "on-primary-fixed-variant": "#604100",
+            "inverse-surface": "#e4e2e0",
+            "surface-container": "#1f201f",
+            "tertiary-fixed": "#dfe4df",
+            "inverse-on-surface": "#30312f",
+            "outline": "#9b8f7f",
+            "surface-dim": "#131413",
+            "surface": "#131413",
+            "surface-variant": "#343534",
+            "background": "#131413",
+            "on-surface-variant": "#d2c4b4",
+            "primary-fixed": "#ffdeae",
+            "secondary": "#89d7a0",
+            "on-secondary": "#00391c",
+            "secondary-container": "#015d31",
+            "secondary-fixed-dim": "#89d7a0",
+            "surface-bright": "#393938",
+            "inverse-primary": "#7c5816",
+            "surface-tint": "#efbf74",
+            "surface-container-high": "#292a29",
+            "on-tertiary-fixed-variant": "#434845",
+            "primary-fixed-dim": "#efbf74",
+            "on-secondary-fixed": "#00210e",
+            "error-container": "#93000a",
+            "on-tertiary-container": "#414643",
+            "secondary-fixed": "#a5f4bb",
+            "on-surface": "#e4e2e0",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#0d0e0d",
+            "on-tertiary": "#2d322f",
+            "on-secondary-container": "#86d39c",
+            "on-primary": "#432c00",
+            "on-primary-fixed": "#281900",
+            "on-error-container": "#ffdad6",
+            "on-primary-container": "#5e3f00",
+            "on-tertiary-fixed": "#181d1a",
+            "tertiary": "#cbcfcb",
+            "primary-container": "#d9ab62"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "gutter": "0.75rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Manrope"],
+            "keypad-num": ["Manrope"],
+            "display-calc-mobile": ["Manrope"],
+            "label-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "keypad-op": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "display-calc": ["Manrope"],
+            "body-md": ["Manrope"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "keypad-num": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-calc-mobile": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "keypad-op": ["28px", { "lineHeight": "34px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-calc": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Disable double-tap zoom & text selection on mobile device frame */
+    * {
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex items-center justify-center p-0 md:p-6 font-body-md select-none">
+<!-- iPhone 14 / 15 Dimension Chassis (390px x 844px) -->
+<main class="w-full max-w-[390px] h-[844px] bg-surface flex flex-col justify-between relative overflow-hidden shadow-2xl md:rounded-[48px] md:border md:border-surface-container-high">
+<!-- Top Screen Cluster: iOS Status Bar & Discreet Header -->
+<header class="w-full pt-3 px-6 flex flex-col shrink-0 z-10">
+<!-- iOS Standard Status Bar -->
+<div class="w-full h-8 flex justify-between items-center text-on-surface font-body-md tracking-tight">
+<span class="text-body-md font-body-md font-semibold tracking-tight text-on-surface pl-1">09:41</span>
+<!-- Status Bar Hardware Indicators -->
+<div class="flex items-center gap-1.5 text-on-surface pr-1">
+<span class="material-symbols-outlined text-[16px] leading-none text-on-surface" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[16px] leading-none text-on-surface" data-icon="wifi">wifi</span>
+<!-- iOS Accurate Battery Capsule -->
+<div class="w-5 h-2.5 rounded-sm border border-on-surface/80 p-0.5 flex items-center ml-0.5 relative">
+<div class="h-full w-3 bg-on-surface rounded-[1px]"></div>
+<div class="w-0.5 h-1 bg-on-surface/80 absolute -right-1 top-0.5 rounded-r-sm"></div>
+</div>
+</div>
+</div>
+<!-- Native Tool App Bar (Discreet, zero indication of vault partition) -->
+<div class="w-full py-1.5 flex justify-center items-center">
+<h1 class="text-label-md font-label-md font-medium text-tertiary tracking-normal opacity-70">
+          Calculadora
+        </h1>
+</div>
+</header>
+<!-- Display Area -->
+<section class="w-full px-margin flex flex-col justify-end flex-1 pb-4">
+<!-- Expression & Secondary Controls Bar -->
+<div class="w-full flex items-center justify-between mb-1 min-h-[32px]">
+<div class="text-body-md font-body-md text-tertiary-container tracking-tight transition-opacity duration-150" id="history-display"></div>
+<!-- Discreet Backspace Trigger -->
+<button aria-label="Apagar dígito" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface active:scale-90 active:bg-surface-container-high transition duration-100 ease-out" id="btn-backspace" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Main Readout Output -->
+<div class="w-full overflow-hidden flex justify-end items-baseline">
+<div class="text-display-calc-mobile font-display-calc-mobile text-on-surface tracking-tighter text-right select-text transition-all duration-75 overflow-hidden whitespace-nowrap" id="main-display">0</div>
+</div>
+</section>
+<!-- Keypad Matrix 4-Column Grid -->
+<section aria-label="Teclado numérico" class="w-full px-margin pb-3 shrink-0">
+<div class="grid grid-cols-4 gap-gutter w-full">
+<!-- Row 1: Function Controls & Division -->
+<button class="h-[70px] rounded-2xl bg-surface-container-highest text-on-surface text-headline-md font-headline-md font-medium active:scale-[0.96] active:bg-surface-bright transition-all duration-75 flex items-center justify-center" id="btn-clear" type="button">AC</button>
+<button class="h-[70px] rounded-2xl bg-surface-container-highest text-on-surface text-headline-md font-headline-md font-medium active:scale-[0.96] active:bg-surface-bright transition-all duration-75 flex items-center justify-center" id="btn-negate" type="button">
+          ±
+        </button>
+<button class="h-[70px] rounded-2xl bg-surface-container-highest text-on-surface text-headline-md font-headline-md font-medium active:scale-[0.96] active:bg-surface-bright transition-all duration-75 flex items-center justify-center" id="btn-percent" type="button">
+          %
+        </button>
+<button class="h-[70px] rounded-2xl bg-primary-container text-on-primary-container text-keypad-op font-keypad-op active:scale-[0.96] active:bg-primary transition-all duration-75 flex items-center justify-center" data-op="÷" type="button">
+          ÷
+        </button>
+<!-- Row 2: 7, 8, 9 & Multiplication -->
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="7" type="button">
+          7
+        </button>
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="8" type="button">
+          8
+        </button>
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="9" type="button">
+          9
+        </button>
+<button class="h-[70px] rounded-2xl bg-primary-container text-on-primary-container text-keypad-op font-keypad-op active:scale-[0.96] active:bg-primary transition-all duration-75 flex items-center justify-center" data-op="×" type="button">
+          ×
+        </button>
+<!-- Row 3: 4, 5, 6 & Subtraction -->
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="4" type="button">
+          4
+        </button>
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="5" type="button">
+          5
+        </button>
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="6" type="button">
+          6
+        </button>
+<button class="h-[70px] rounded-2xl bg-primary-container text-on-primary-container text-keypad-op font-keypad-op active:scale-[0.96] active:bg-primary transition-all duration-75 flex items-center justify-center" data-op="−" type="button">
+          −
+        </button>
+<!-- Row 4: 1, 2, 3 & Addition -->
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="1" type="button">
+          1
+        </button>
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="2" type="button">
+          2
+        </button>
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" data-num="3" type="button">
+          3
+        </button>
+<button class="h-[70px] rounded-2xl bg-primary-container text-on-primary-container text-keypad-op font-keypad-op active:scale-[0.96] active:bg-primary transition-all duration-75 flex items-center justify-center" data-op="+" type="button">
+          +
+        </button>
+<!-- Row 5: 0 (Span 2), Decimal separator & Equals -->
+<button class="h-[70px] col-span-2 rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num pl-8 active:scale-[0.97] active:bg-surface-variant transition-all duration-75 flex items-center justify-start" data-num="0" type="button">
+          0
+        </button>
+<button class="h-[70px] rounded-2xl bg-surface-container-high text-on-surface text-keypad-num font-keypad-num active:scale-[0.96] active:bg-surface-variant transition-all duration-75 flex items-center justify-center" id="btn-comma" type="button">
+          ,
+        </button>
+<button class="h-[70px] rounded-2xl bg-primary-container text-on-primary-container text-keypad-op font-keypad-op active:scale-[0.96] active:bg-primary transition-all duration-75 flex items-center justify-center" id="btn-equals" type="button">
+          =
+        </button>
+</div>
+</section>
+<!-- Safe Area: Classic iOS Bottom Home Bar Indicator -->
+<footer class="w-full pb-2.5 pt-1 flex justify-center items-center shrink-0">
+<div class="w-36 h-1 bg-on-surface/30 rounded-full"></div>
+</footer>
+</main>
+<!-- High-fidelity Native Tactile Feedback & Mathematical Logic -->
+<script>
+    (function () {
+      const display = document.getElementById('main-display');
+      const history = document.getElementById('history-display');
+      const clearBtn = document.getElementById('btn-clear');
+
+      let currentValue = '31415926';
+      let previousValue = '2100';
+      let currentOperator = null;
+      let shouldResetDisplay = false;
+
+      function formatNumber(val) {
+        if (!val || val === '0') return '0';
+        if (val === '-') return '-';
+
+        const parts = val.split('.');
+        const integerPart = parts[0];
+        const decimalPart = parts.length > 1 ? ',' + parts[1] : '';
+
+        const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        return formattedInteger + decimalPart;
+      }
+
+      function updateDisplay() {
+        display.textContent = formatNumber(currentValue);
+
+        // Fluid typography auto-scaling for viewport preservation
+        const len = currentValue.length;
+        if (len > 9) {
+          display.className = 'text-headline-lg font-headline-lg text-on-surface tracking-tight text-right select-text';
+        } else if (len > 6) {
+          display.className = 'text-keypad-num font-keypad-num text-on-surface tracking-tight text-right select-text';
+        } else {
+          display.className = 'text-display-calc-mobile font-display-calc-mobile text-on-surface tracking-tighter text-right select-text';
+        }
+
+        clearBtn.textContent = currentValue === '0' ? 'AC' : 'C';
+      }
+
+      document.querySelectorAll('[data-num]').forEach(button => {
+        button.addEventListener('click', () => {
+          const digit = button.getAttribute('data-num');
+          if (shouldResetDisplay) {
+            currentValue = digit;
+            shouldResetDisplay = false;
+          } else {
+            if (currentValue === '0') {
+              currentValue = digit;
+            } else if (currentValue.length < 12) {
+              currentValue += digit;
+            }
+          }
+          updateDisplay();
+        });
+      });
+
+      document.querySelectorAll('[data-op]').forEach(button => {
+        button.addEventListener('click', () => {
+          const op = button.getAttribute('data-op');
+          previousValue = currentValue;
+          currentOperator = op;
+          shouldResetDisplay = true;
+          history.textContent = formatNumber(previousValue) + ' ' + currentOperator;
+        });
+      });
+
+      document.getElementById('btn-comma').addEventListener('click', () => {
+        if (shouldResetDisplay) {
+          currentValue = '0.';
+          shouldResetDisplay = false;
+        } else if (!currentValue.includes('.')) {
+          currentValue += '.';
+        }
+        updateDisplay();
+      });
+
+      clearBtn.addEventListener('click', () => {
+        if (currentValue === '0') {
+          previousValue = '';
+          currentOperator = null;
+          history.textContent = '';
+        } else {
+          currentValue = '0';
+        }
+        updateDisplay();
+      });
+
+      document.getElementById('btn-negate').addEventListener('click', () => {
+        if (currentValue !== '0') {
+          if (currentValue.startsWith('-')) {
+            currentValue = currentValue.substring(1);
+          } else {
+            currentValue = '-' + currentValue;
+          }
+          updateDisplay();
+        }
+      });
+
+      document.getElementById('btn-percent').addEventListener('click', () => {
+        const num = parseFloat(currentValue);
+        if (!isNaN(num)) {
+          currentValue = String(num / 100);
+          updateDisplay();
+        }
+      });
+
+      document.getElementById('btn-backspace').addEventListener('click', () => {
+        if (currentValue.length > 1) {
+          currentValue = currentValue.slice(0, -1);
+          if (currentValue === '-') currentValue = '0';
+        } else {
+          currentValue = '0';
+        }
+        updateDisplay();
+      });
+
+      document.getElementById('btn-equals').addEventListener('click', () => {
+        if (!currentOperator || !previousValue) return;
+
+        const prev = parseFloat(previousValue);
+        const curr = parseFloat(currentValue);
+        let result = 0;
+
+        switch (currentOperator) {
+          case '+':
+            result = prev + curr;
+            break;
+          case '−':
+            result = prev - curr;
+            break;
+          case '×':
+            result = prev * curr;
+            break;
+          case '÷':
+            result = curr !== 0 ? prev / curr : 'Erro';
+            break;
+        }
+
+        history.textContent = formatNumber(previousValue) + ' ' + currentOperator + ' ' + formatNumber(currentValue) + ' =';
+        currentValue = String(result);
+        currentOperator = null;
+        shouldResetDisplay = true;
+        updateDisplay();
+      });
+
+      // Initial visual render
+      updateDisplay();
+    })();
+  </script>
+</body></html>

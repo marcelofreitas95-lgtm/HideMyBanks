@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Simulador de Aparência do iPhone - Área Segura</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#f7c67a",
+            "on-background": "#e4e2e0",
+            "tertiary-container": "#afb4b0",
+            "on-secondary-fixed-variant": "#00522b",
+            "outline-variant": "#4f4539",
+            "tertiary-fixed-dim": "#c3c8c3",
+            "surface-container-highest": "#343534",
+            "on-error": "#690005",
+            "surface-container-low": "#1b1c1b",
+            "on-primary-fixed-variant": "#604100",
+            "inverse-surface": "#e4e2e0",
+            "surface-container": "#1f201f",
+            "tertiary-fixed": "#dfe4df",
+            "inverse-on-surface": "#30312f",
+            "outline": "#9b8f7f",
+            "surface-dim": "#131413",
+            "surface": "#131413",
+            "surface-variant": "#343534",
+            "background": "#131413",
+            "on-surface-variant": "#d2c4b4",
+            "primary-fixed": "#ffdeae",
+            "secondary": "#89d7a0",
+            "on-secondary": "#00391c",
+            "secondary-container": "#015d31",
+            "secondary-fixed-dim": "#89d7a0",
+            "surface-bright": "#393938",
+            "inverse-primary": "#7c5816",
+            "surface-tint": "#efbf74",
+            "surface-container-high": "#292a29",
+            "on-tertiary-fixed-variant": "#434845",
+            "primary-fixed-dim": "#efbf74",
+            "on-secondary-fixed": "#00210e",
+            "error-container": "#93000a",
+            "on-tertiary-container": "#414643",
+            "secondary-fixed": "#a5f4bb",
+            "on-surface": "#e4e2e0",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#0d0e0d",
+            "on-tertiary": "#2d322f",
+            "on-secondary-container": "#86d39c",
+            "on-primary": "#432c00",
+            "on-primary-fixed": "#281900",
+            "on-error-container": "#ffdad6",
+            "on-primary-container": "#5e3f00",
+            "on-tertiary-fixed": "#181d1a",
+            "tertiary": "#cbcfcb",
+            "primary-container": "#d9ab62"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "gutter": "0.75rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Manrope"],
+            "keypad-num": ["Manrope"],
+            "display-calc-mobile": ["Manrope"],
+            "label-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "keypad-op": ["Manrope"],
+            "label-sm": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "display-calc": ["Manrope"],
+            "body-md": ["Manrope"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "keypad-num": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-calc-mobile": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "keypad-op": ["28px", { "lineHeight": "34px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "display-calc": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.03em", "fontWeight": "300" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .tap-effect {
+      transition: transform 80ms ease, opacity 80ms ease;
+    }
+    .tap-effect:active {
+      transform: scale(0.96);
+      opacity: 0.88;
+    }
+    .safe-glass {
+      background: rgba(31, 32, 31, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface-dim text-on-surface antialiased min-h-screen flex items-center justify-center p-0 md:p-6 select-none font-body-md text-body-md">
+<!-- iPhone 390x844 Shell -->
+<main class="w-[390px] h-[844px] max-w-full max-h-screen relative flex flex-col justify-between overflow-hidden bg-[#121312] shadow-2xl rounded-none md:rounded-[48px] border-0 md:border md:border-outline-variant/30">
+<!-- Top System Notch & Status Area -->
+<header class="w-full pt-3 px-6 flex flex-col z-30 shrink-0">
+<!-- iOS Status Bar (09:41, Island notch, Signal, WiFi, Battery) -->
+<div class="w-full flex justify-between items-center text-on-surface text-label-sm font-label-sm">
+<span class="tracking-tight text-on-surface font-semibold text-[14px]">09:41</span>
+<!-- Dynamic Island replica (Cupertino 390) -->
+<div class="w-24 h-6 bg-surface-container-lowest rounded-full mx-auto flex items-center justify-end pr-2 space-x-1.5 shadow-inner">
+<div class="w-2.5 h-2.5 rounded-full bg-[#1b1c1b]/80 border border-outline-variant/20"></div>
+</div>
+<div class="flex items-center space-x-1.5 text-on-surface text-[12px]">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[15px]">wifi</span>
+<div class="w-5 h-2.5 border border-on-surface/80 rounded-sm p-0.5 flex items-center">
+<div class="w-3 h-1.5 bg-on-surface rounded-xs"></div>
+</div>
+</div>
+</div>
+<!-- Quick back button to vault sanctuary -->
+<div class="w-full pt-3 pb-1 flex items-center justify-between">
+<a class="inline-flex items-center space-x-1 text-primary hover:text-primary-fixed transition-colors tap-effect text-label-md font-label-md" href="#"><span class="material-symbols-outlined text-[18px]">arrow_back_ios</span><span>Voltar à Área privada</span></a>
+<div class="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant/30">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-label-sm font-label-sm text-secondary tracking-wider">SIMULAÇÃO ATIVA</span>
+</div>
+</div>
+<!-- Title & Tactile Segmented Control -->
+<div class="w-full pt-2 pb-2 flex flex-col items-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant text-center pb-2">Simulação do iPhone (iOS)</p>
+<div class="w-full max-w-[340px] bg-surface-container-lowest/80 p-1 rounded-xl flex items-center border border-outline-variant/30" role="tablist">
+<button aria-selected="true" class="flex-1 py-1.5 rounded-lg text-label-md font-label-md transition-all duration-150 flex items-center justify-center space-x-1.5 bg-surface-container text-primary font-semibold shadow-sm" id="tab-apps" onclick="switchTab('apps')" role="tab">
+<span class="material-symbols-outlined text-[16px]">apps</span>
+<span>Aplicativos</span>
+</button>
+<button aria-selected="false" class="flex-1 py-1.5 rounded-lg text-label-md font-label-md transition-all duration-150 flex items-center justify-center space-x-1.5 text-on-surface-variant hover:text-on-surface" id="tab-notifs" onclick="switchTab('notifs')" role="tab">
+<span class="material-symbols-outlined text-[16px]">notifications</span>
+<span>Notificações</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="flex-1 w-full px-5 overflow-y-auto overflow-x-hidden relative flex flex-col">
+<!-- VIEW: APLICATIVOS (State 1: Active) -->
+<section class="w-full flex-1 flex flex-col justify-between py-2 transition-opacity duration-200" id="view-apps">
+<!-- 4-column App Grid (Standard Everyday Apps) -->
+<div class="grid grid-cols-4 gap-y-3.5 gap-x-3 w-full pt-1">
+<!-- App 1: Mensagens -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-[#30D158] flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-white text-[32px]" style="font-variation-settings: 'FILL' 1;">chat</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Mensagens</span>
+</div>
+<!-- App 2: Safari -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-[#0A84FF] flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-white text-[32px]">explore</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Safari</span>
+</div>
+<!-- App 3: Fotos -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[#FF9F0A] text-[32px]" style="font-variation-settings: 'FILL' 1;">filter_vintage</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Fotos</span>
+</div>
+<!-- App 4: Câmera -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-surface-container-high border border-outline-variant/40 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-on-surface text-[30px]" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Câmera</span>
+</div>
+<!-- App 5: Mapas -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-[#32D74B]/20 border border-[#32D74B]/40 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[#89d7a0] text-[30px]">navigation</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Mapas</span>
+</div>
+<!-- App 6: Ajustes -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-surface-container-highest flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-on-surface-variant text-[30px]">settings</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Ajustes</span>
+</div>
+<!-- App 7: Calendário -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-white flex flex-col items-center justify-center shadow-md">
+<span class="text-[10px] uppercase font-bold text-red-500 leading-none">TER</span>
+<span class="text-[20px] font-bold text-black leading-tight">24</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Calendário</span>
+</div>
+<!-- App 8: Arquivos -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-[#64D2FF]/20 border border-[#64D2FF]/30 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[#64D2FF] text-[30px]" style="font-variation-settings: 'FILL' 1;">folder</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Arquivos</span>
+</div>
+<!-- App 9: Música -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-[#FA2D48] flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-white text-[30px]">queue_music</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Música</span>
+</div>
+<!-- App 10: Notas -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-[#FFD60A]/90 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[#1c1c1e] text-[30px]">edit_note</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Notas</span>
+</div>
+<!-- App 11: Relógio -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-black border border-outline-variant/40 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-white text-[30px]">schedule</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Relógio</span>
+</div>
+<!-- App 12: Calculadora (A fachada do Vault) -->
+<div class="flex flex-col items-center tap-effect cursor-pointer group relative">
+<div class="w-[58px] h-[58px] rounded-[15px] bg-surface-container-high border border-primary/40 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-primary text-[30px]">calculate</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface mt-1.5 text-center truncate w-full">Calculadora</span>
+<!-- Micro badge subtle disguise indicator -->
+<span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-primary rounded-full ring-2 ring-[#121312]"></span>
+</div>
+</div>
+<!-- Protected Banking Apps Concealment Card & Notice -->
+<div class="mt-3 safe-glass rounded-2xl p-3.5 border border-outline-variant/30 flex flex-col space-y-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">visibility_off</span>
+<span class="text-label-md font-label-md text-on-surface font-semibold">Bancos Ocultos (na simulação)</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-label-sm tracking-wide bg-secondary-container/60 text-on-secondary-container border border-secondary/30">
+              4 OCULTOS
+            </span>
+</div>
+<div class="grid grid-cols-4 gap-2 pt-0.5">
+<div class="bg-surface-container px-2 py-1.5 rounded-lg flex flex-col items-center justify-center border border-outline-variant/20">
+<span class="text-[11px] font-semibold text-on-surface-variant line-through decoration-error/70">Bancos Ocultos (na simulação)</span>
+<span class="text-[9px] text-secondary mt-0.5">Invisível</span>
+</div>
+<div class="bg-surface-container px-2 py-1.5 rounded-lg flex flex-col items-center justify-center border border-outline-variant/20">
+<span class="text-[11px] font-semibold text-on-surface-variant line-through decoration-error/70">Bancos Ocultos (na simulação)</span>
+<span class="text-[9px] text-secondary mt-0.5">Invisível</span>
+</div>
+<div class="bg-surface-container px-2 py-1.5 rounded-lg flex flex-col items-center justify-center border border-outline-variant/20">
+<span class="text-[11px] font-semibold text-on-surface-variant line-through decoration-error/70">Bancos Ocultos (na simulação)</span>
+<span class="text-[9px] text-secondary mt-0.5">Invisível</span>
+</div>
+<div class="bg-surface-container px-2 py-1.5 rounded-lg flex flex-col items-center justify-center border border-outline-variant/20">
+<span class="text-[11px] font-semibold text-on-surface-variant line-through decoration-error/70">Bancos Ocultos (na simulação)</span>
+<span class="text-[9px] text-secondary mt-0.5">Invisível</span>
+</div>
+</div>
+</div>
+<!-- Floating Simulation Active Banner -->
+<div class="mt-2.5 p-3 rounded-xl bg-surface-container-high/90 border border-outline-variant/30 flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/80 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+</div>
+<div class="flex-1 leading-tight">
+<div class="flex items-center space-x-1.5">
+<span class="text-label-sm font-label-sm font-bold text-on-surface">Simulação ativa</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</div>
+<p class="text-[12px] text-on-surface-variant mt-0.5">Protótipo: a proteção do iOS está sendo simulada.</p>
+</div>
+</div>
+</section>
+<!-- VIEW: NOTIFICAÇÕES (State 2: Hidden initially) -->
+<section class="w-full flex-1 hidden flex-col justify-center items-center py-4 transition-opacity duration-200" id="view-notifs">
+<!-- Comparative Empty State Vault Card -->
+<div class="w-full max-w-[340px] bg-surface-container rounded-2xl p-5 border border-outline-variant/40 flex flex-col items-center text-center space-y-3.5 shadow-xl">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-on-surface-variant text-[28px]">notifications_off</span>
+<div class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[10px]">check</span>
+</div>
+</div>
+<div class="space-y-1">
+<div class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-secondary-container/50 border border-secondary/30 text-secondary text-[11px] font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Simulação</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface text-[18px] pt-1">Nenhuma notificação de banco</h3>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant text-[13px] leading-relaxed">Protótipo: a proteção do iOS está sendo simulada nesta visualização.</p>
+<!-- Audit details checklist -->
+<div class="w-full pt-2 border-t border-outline-variant/20 flex flex-col space-y-1.5 text-left text-label-sm font-label-sm text-on-surface-variant">
+<div class="flex items-center justify-between text-[12px]">
+<span class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">shield</span>
+<span>Transações PIX em push</span>
+</span>
+<span class="text-secondary font-semibold">Bloqueado</span>
+</div>
+<div class="flex items-center justify-between text-[12px]">
+<span class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">shield</span>
+<span>Alertas de saldo na Lock Screen</span>
+</span>
+<span class="text-secondary font-semibold">Ocultado</span>
+</div>
+<div class="flex items-center justify-between text-[12px]">
+<span class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[15px] text-secondary">shield</span>
+<span>Comprovantes de cartão</span>
+</span>
+<span class="text-secondary font-semibold">Suprimido</span>
+</div>
+</div>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant/80 text-center max-w-[280px] mt-4">
+          Telas de visualização pública permanecem limpas de qualquer vestígio de saldo ou compras.
+        </p>
+</section>
+</div>
+<!-- Bottom Action & iPhone Home Indicator -->
+<footer class="w-full px-6 pt-2 pb-2 bg-gradient-to-t from-[#121312] via-[#121312]/95 to-transparent flex flex-col items-center shrink-0 z-30">
+<!-- Interactive Mode Toggle Button -->
+<button class="w-full py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest active:scale-[0.98] border border-outline-variant/40 text-on-surface text-label-md font-label-md transition-all flex items-center justify-center space-x-2" id="test-mode-btn" onclick="toggleInspectionMode()">
+<span class="material-symbols-outlined text-[18px] text-primary">published_with_changes</span>
+<span>Alternar modo para teste</span>
+</button>
+<!-- Technical Disclaimer -->
+<p class="text-[10px] text-on-surface-variant/70 text-center leading-snug px-3 mt-2">
+        Protótipo de validação de interface. Não altera configurações de sistema do dispositivo físico.
+      </p>
+<!-- Classic iOS Home Indicator Bar -->
+<div class="w-32 h-1 bg-on-surface/40 rounded-full mt-2.5 mb-1.5"></div>
+</footer>
+</main>
+<script>
+    let currentTab = 'apps';
+    let inspectionActive = false;
+
+    function switchTab(tab) {
+      currentTab = tab;
+      const appsBtn = document.getElementById('tab-apps');
+      const notifsBtn = document.getElementById('tab-notifs');
+      const viewApps = document.getElementById('view-apps');
+      const viewNotifs = document.getElementById('view-notifs');
+
+      if (tab === 'apps') {
+        appsBtn.className = "flex-1 py-1.5 rounded-lg text-label-md font-label-md transition-all duration-150 flex items-center justify-center space-x-1.5 bg-surface-container text-primary font-semibold shadow-sm";
+        appsBtn.setAttribute('aria-selected', 'true');
+        notifsBtn.className = "flex-1 py-1.5 rounded-lg text-label-md font-label-md transition-all duration-150 flex items-center justify-center space-x-1.5 text-on-surface-variant hover:text-on-surface";
+        notifsBtn.setAttribute('aria-selected', 'false');
+
+        viewApps.classList.remove('hidden');
+        viewNotifs.classList.add('hidden');
+      } else {
+        notifsBtn.className = "flex-1 py-1.5 rounded-lg text-label-md font-label-md transition-all duration-150 flex items-center justify-center space-x-1.5 bg-surface-container text-primary font-semibold shadow-sm";
+        notifsBtn.setAttribute('aria-selected', 'true');
+        appsBtn.className = "flex-1 py-1.5 rounded-lg text-label-md font-label-md transition-all duration-150 flex items-center justify-center space-x-1.5 text-on-surface-variant hover:text-on-surface";
+        appsBtn.setAttribute('aria-selected', 'false');
+
+        viewApps.classList.add('hidden');
+        viewNotifs.classList.remove('hidden');
+      }
+    }
+
+    function toggleInspectionMode() {
+      inspectionActive = !inspectionActive;
+      const btn = document.getElementById('test-mode-btn');
+      if (inspectionActive) {
+        btn.classList.add('border-primary', 'bg-surface-container-highest');
+        btn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>
+          <span class="text-secondary font-semibold">Modo de teste: Protegido (OK)</span>
+        `;
+      } else {
+        btn.classList.remove('border-primary', 'bg-surface-container-highest');
+        btn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px] text-primary">published_with_changes</span>
+          <span>Alternar modo para teste</span>
+        `;
+      }
+    }
+  </script>
+</body></html>
