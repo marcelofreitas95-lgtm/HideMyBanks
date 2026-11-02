@@ -31,3 +31,5 @@ O workflow completo passou na [build 4](https://codemagic.io/app/6ae7f03e3fff223
 ## Gerar a IPA e distribuir
 
 Os workflows `ios-development` e `pal-notarization` dependem dos identificadores e das credenciais Apple descritos em [Implementação e publicação](IMPLEMENTACAO_E_PUBLICACAO.md). A validação no simulador precisa ser complementada pela instalação no iPhone e pelos testes de ocultação, busca, notificações e bloqueio antes da distribuição.
+
+Consulte [Configuração Apple](CONFIGURACAO_APPLE.md) para os recursos, as permissões e os nomes de referência esperados pelos workflows. Informar o Team ID não configura a assinatura; o Bundle ID deve permanecer pendente até seu registro na Apple.
