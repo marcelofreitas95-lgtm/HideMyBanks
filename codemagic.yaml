@@ -21,6 +21,8 @@ workflows:
         script: flutter build web --release --no-web-resources-cdn
     artifacts:
       - build/reports/*.xcresult
+      - build/reports/*.json
+      - build/reports/simulator-entitlements.plist
       - coverage/lcov.info
       - build/web/**
 
