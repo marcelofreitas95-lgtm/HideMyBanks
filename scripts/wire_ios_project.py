@@ -82,19 +82,24 @@ def wire():
         marker = f"/* End {section} section */"
         assert marker in text, section
         text = text.replace(marker, "\n".join(entries) + "\n" + marker)
-    def append_to_list(object_id, field, entries):
+    def add_to_list(object_id, field, entries, prepend=False):
         nonlocal text
         pattern = r"(" + object_id + r"\b[^=]*=\s*\{.*?\b" + field + r" = \()(.*?)(\);)"
-        text, count = re.subn(pattern, lambda m: m[1] + m[2] + "\n" +
-            "\n".join("\t\t\t\t" + e + "," for e in entries) + "\n\t\t\t" + m[3], text, count=1, flags=re.S)
+        additions_text = "\n".join("\t\t\t\t" + e + "," for e in entries)
+        def insert(match):
+            content = ("\n" + additions_text + match[2] if prepend else
+                       match[2] + "\n" + additions_text + "\n\t\t\t")
+            return match[1] + content + match[3]
+        text, count = re.subn(pattern, insert, text, count=1, flags=re.S)
         assert count == 1, (object_id, field)
-    append_to_list("97C146EA1CF9000F007C117D", "files", app_sources)
-    append_to_list("97C146EC1CF9000F007C117D", "files", [privacy])
-    append_to_list("97C146ED1CF9000F007C117D", "buildPhases", [embed_phase])
-    append_to_list("97C146ED1CF9000F007C117D", "dependencies", [dependency])
-    append_to_list("97C146E61CF9000F007C117D", "targets", [target])
-    append_to_list("97C146E51CF9000F007C117D", "children", [group])
-    append_to_list("97C146EF1CF9000F007C117D", "children", [product])
+    add_to_list("97C146EA1CF9000F007C117D", "files", app_sources)
+    add_to_list("97C146EC1CF9000F007C117D", "files", [privacy])
+    # Flutter requires embedding extensions before its Run Script build phase.
+    add_to_list("97C146ED1CF9000F007C117D", "buildPhases", [embed_phase], prepend=True)
+    add_to_list("97C146ED1CF9000F007C117D", "dependencies", [dependency])
+    add_to_list("97C146E61CF9000F007C117D", "targets", [target])
+    add_to_list("97C146E51CF9000F007C117D", "children", [group])
+    add_to_list("97C146EF1CF9000F007C117D", "children", [product])
     text = text.replace("IPHONEOS_DEPLOYMENT_TARGET = 13.0;", "IPHONEOS_DEPLOYMENT_TARGET = 16.0;")
     text = text.replace('TARGETED_DEVICE_FAMILY = "1,2";', 'TARGETED_DEVICE_FAMILY = 1;')
     text = text.replace("INFOPLIST_FILE = Runner/Info.plist;",
