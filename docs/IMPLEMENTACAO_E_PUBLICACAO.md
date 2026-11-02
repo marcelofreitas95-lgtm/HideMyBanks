@@ -7,11 +7,11 @@ Referência: 01/11/2026. Canal escolhido: AltStore PAL. Código Flutter 3.41.6/D
 | Entrega | Situação |
 |---|---|
 | Calculadora, interface e demonstração web do Stitch | Implementadas e testadas |
-| Ponte Flutter/Swift, PIN, seleção e políticas | Código implementado; compilação e validação iOS pendentes |
-| Extensão Device Activity Monitor | Código e target integrados; testes no macOS e iPhone pendentes |
+| Ponte Flutter/Swift, PIN, seleção e políticas | Compilada; Keychain e regras temporais testados no simulador; validação física pendente |
+| Extensão Device Activity Monitor | Target compilado; callbacks e restrições no iPhone pendentes |
 | Testes Flutter | 17 aprovados; análise sem ocorrências |
-| Testes Swift/Keychain | Cinco testes escritos, ainda não executados |
-| Codemagic e assinatura | Três workflows prontos; conta, integração e perfis pendentes |
+| Testes Swift/Keychain | Cinco aprovados no simulador iOS 26.5 |
+| Codemagic e assinatura | Conta conectada e `validate` aprovado; assinatura Apple e perfis pendentes |
 | Aprovações Family Controls app/extensão | Pendentes da Apple |
 | Notarização e ADP | Pendentes |
 | Instalação via PAL e testes de notificações | Pendentes |
@@ -77,7 +77,7 @@ Executar, em ordem:
 4. Executar os testes físicos abaixo e registrar evidências da versão em `release/readiness.json`.
 5. `pal-notarization`: verifica as evidências, repete os testes, assina e envia ao App Store Connect. Não solicita publicação na App Store nem TestFlight. No App Store Connect, configurar a distribuição alternativa e submeter a versão escolhida para **Notarization**.
 
-O `codemagic.yaml` foi escrito e validado estruturalmente; ainda não foi executado em uma conta do Codemagic. A disponibilidade do Xcode fixado deve ser confirmada ao conectar o serviço. Minutos de compilação e a assinatura Apple têm custos definidos pelos provedores.
+O workflow `validate` foi executado e aprovado no Mac M2 com Xcode 26.6. Os testes nativos usam assinatura local do simulador, com cinco XCTest aprovados; não foi gerada IPA para um aparelho físico. `ios-development` e `pal-notarization` continuam dependentes das credenciais e evidências Apple. Consulte [acesso ao Codemagic](CODEMAGIC.md) e [evidências da validação](VALIDACAO_CODEMAGIC_20261101.md). Minutos de compilação e a assinatura Apple têm custos definidos pelos provedores.
 
 ## Testes físicos obrigatórios
 

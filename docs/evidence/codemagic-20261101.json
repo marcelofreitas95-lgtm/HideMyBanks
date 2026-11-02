@@ -1,0 +1,70 @@
+{
+  "appId": "6ae7f03e3fff223c356f76af",
+  "buildId": "6ae7f590efa74786046ff2a2",
+  "buildUrl": "https://codemagic.io/app/6ae7f03e3fff223c356f76af/build/6ae7f590efa74786046ff2a2",
+  "workflow": "validate",
+  "branch": "main",
+  "sourceCommit": "96a88f39e5c82174afd4e9db61d10a2450f3a7e8",
+  "status": "finished",
+  "instanceType": "mac_mini_m2",
+  "flutterVersion": "3.41.6",
+  "xcodeVersion": "26.6",
+  "startedAtUTC": "2026-11-02T02:29:44.248000Z",
+  "finishedAtUTC": "2026-11-02T02:34:38.859000Z",
+  "checks": {
+    "flutterAnalyze": "passed",
+    "flutterTests": {
+      "passed": 17,
+      "failed": 0
+    },
+    "releaseScriptTests": {
+      "passed": 7,
+      "failed": 0
+    },
+    "nativeBuild": "passed",
+    "nativeTests": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "total": 5,
+      "result": "Passed"
+    },
+    "webBuild": "passed"
+  },
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "osVersion": "26.5",
+    "osBuildNumber": "23F77",
+    "architecture": "arm64",
+    "platform": "iOS Simulator"
+  },
+  "history": [
+    {
+      "id": "6ae7f0beefa74786046ff1a7",
+      "status": "failed",
+      "sourceCommit": "2585b9bb4e8fa8a281c4ef706276c7771516440f",
+      "elapsedSeconds": 142
+    },
+    {
+      "id": "6ae7f1a9efa74786046ff1cd",
+      "status": "failed",
+      "sourceCommit": "24292b8e434d42446344d58917a8dc61995e10cc",
+      "elapsedSeconds": 370
+    },
+    {
+      "id": "6ae7f41befa74786046ff252",
+      "status": "failed",
+      "sourceCommit": "d8771636bc736f100af2b566bf6e07800b62aa7e",
+      "elapsedSeconds": 186
+    },
+    {
+      "id": "6ae7f590efa74786046ff2a2",
+      "status": "finished",
+      "sourceCommit": "96a88f39e5c82174afd4e9db61d10a2450f3a7e8",
+      "elapsedSeconds": 295
+    }
+  ],
+  "totalElapsedBuildSeconds": 993,
+  "billingAmountVerified": false,
+  "physicalDeviceValidated": false
+}

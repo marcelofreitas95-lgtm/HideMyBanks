@@ -1,8 +1,8 @@
 {
   "version": "1.0.0",
   "buildNumber": 1,
-  "nativeBuild": {"passed": false, "evidence": ""},
-  "nativeTests": {"passed": false, "evidence": ""},
+  "nativeBuild": {"passed": true, "evidence": "Codemagic validate, commit 96a88f3, app e Monitor compilados para iOS Simulator 26.5: https://codemagic.io/app/6ae7f03e3fff223c356f76af/build/6ae7f590efa74786046ff2a2"},
+  "nativeTests": {"passed": true, "evidence": "Cinco XCTest aprovados, nenhuma falha ou teste ignorado, Keychain real do simulador: https://codemagic.io/app/6ae7f03e3fff223c356f76af/build/6ae7f590efa74786046ff2a2"},
   "familyControlsAppApproved": {"passed": false, "evidence": ""},
   "familyControlsMonitorApproved": {"passed": false, "evidence": ""},
   "marketplaceProvisioningSupported": {"passed": false, "evidence": ""},

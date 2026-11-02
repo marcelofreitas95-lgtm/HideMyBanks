@@ -23,4 +23,4 @@ Os testes e a build ocorreram em uma cópia de trabalho local fora do OneDrive, 
 - Aprovação Family Controls para distribuição da app e da extensão.
 - Notarização, pacote ADP, hospedagem pública e instalação pelo AltStore PAL.
 
-Não houve upload de código para repositório remoto, execução no Codemagic, submissão à Apple ou publicação no AltStore PAL nesta etapa.
+Este registro descreve a etapa local anterior ao primeiro envio ao GitHub. A posterior compilação e execução dos testes no Codemagic estão registradas em [Validação no Codemagic](VALIDACAO_CODEMAGIC_20261101.md). A submissão à Apple e a publicação no AltStore PAL continuam pendentes.

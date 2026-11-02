@@ -9,10 +9,10 @@ A interface nasceu no [projeto do Stitch](https://stitch.withgoogle.com/projects
 ## Situação atual
 
 - Interface, cálculo e demonstração web implementados.
-- Integração Swift de Family Controls/Managed Settings escrita, com seletor nativo, verificação de número no Keychain e extensão Device Activity Monitor.
+- Integração Swift de Family Controls/Managed Settings compilada no simulador, com seletor nativo, verificação de número no Keychain e extensão Device Activity Monitor.
 - Pipeline Codemagic, verificação de assinatura e preparação do pacote PAL implementados.
-- Análise Flutter sem ocorrências e 17 testes Flutter e sete testes dos scripts aprovados.
-- **A compilação Swift, a IPA assinada, os testes físicos e a publicação ainda estão pendentes.** Nenhuma notificação real de banco foi bloqueada ou validada nesta entrega.
+- Workflow `validate` aprovado no Codemagic: análise Flutter sem ocorrências, 17 testes Flutter, sete testes dos scripts e cinco testes Swift aprovados, além da build web.
+- **A IPA assinada para o iPhone, os testes físicos e a publicação ainda estão pendentes.** Nenhuma notificação real de banco foi bloqueada ou validada nesta entrega.
 
 O caminho operacional completo está em [Implementação e publicação](docs/IMPLEMENTACAO_E_PUBLICACAO.md). As evidências pendentes estão em `release/readiness.json`; não devem ser marcadas como aprovadas sem execução real.
 
@@ -42,7 +42,7 @@ Para compilar a partir do Windows, conectar o [repositório HideMyBanks](https:/
 
 **A Apple não oferece à Calculadora controle geral das notificações de terceiros.** O comportamento dos bancos, da pesquisa e do bloqueio precisa ser comprovado no aparelho. A autorização pode ser revogada e o app pode ser removido; não há garantia contra coação.
 
-[Registro de validação](docs/VALIDACAO_20261101.md) detalha o que foi executado e o que depende do iOS.
+[Validação no Codemagic](docs/VALIDACAO_CODEMAGIC_20261101.md) registra o commit e a build aprovados. O [registro local](docs/VALIDACAO_20261101.md) preserva as verificações anteriores. O acesso ao serviço está documentado em [Codemagic](docs/CODEMAGIC.md).
 
 ## Organização
 
